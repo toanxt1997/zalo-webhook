@@ -1,4 +1,4 @@
-```python
+python
 from flask import Flask, request
 import asyncio
 import zalo_bot
@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 # ===== CONFIG =====
 
-BOT_TOKEN = "836220882020538144:wNQISElsFYBFiVwPNVtOOMNegjTasGNnuPszPuvkGAqwOwRMPDHBiqjrrofsYJJg"
+BOT_TOKEN = "TOKEN"
 
 CHAT_IDS = [
     "0a60ffd8fd9a14c44d8b",
@@ -147,4 +147,4 @@ if __name__ == "__main__":
     )
 
 # ==================
-```
+
