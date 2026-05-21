@@ -1,8 +1,6 @@
 name: APPTX Monitor
 
 on:
-  schedule:
-    - cron: "*/1 * * * *"
   workflow_dispatch:
 
 jobs:
@@ -10,22 +8,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check server
-        id: check
+      - name: Infinite monitor
         run: |
-          code=$(curl -o /dev/null -s -w "%{http_code}" https://wws.apptx.xyz)
 
-          echo "HTTP CODE: $code"
+          while true
+          do
 
-          if [ "$code" != "200" ]; then
-            echo "down=true" >> $GITHUB_OUTPUT
-          else
-            echo "down=false" >> $GITHUB_OUTPUT
-          fi
+            echo "🚀 CHECK $(date)"
 
-      - name: Send Zalo alert
-        if: steps.check.outputs.down == 'true'
-        run: |
-          curl -X POST https://zalo-webhook-u0bm.onrender.com/alert \
-          -H "Content-Type: application/json" \
-          -d '{"alertTypeFriendlyName":"Down"}'
+            code=$(curl -o /dev/null -s -w "%{http_code}" https://wws.apptx.xyz)
+
+            echo "HTTP CODE: $code"
+
+            if [ "$code" != "200" ]; then
+
+              echo "🔴 SERVER DOWN"
+
+              curl -X POST https://zalo-webhook-u0bm.onrender.com/alert \
+              -H "Content-Type: application/json" \
+              -d '{"alertTypeFriendlyName":"Down"}'
+
+            else
+
+              echo "🟢 SERVER OK"
+
+            fi
+
+            sleep 30
+
+          done
