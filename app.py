@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 # ===== CONFIG =====
 
-BOT_TOKEN = "TOKEN"
+BOT_TOKEN = "836220882020538144:wNQISElsFYBFiVwPNVtOOMNegjTasGNnuPszPuvkGAqwOwRMPDHBiqjrrofsYJJg"
 
 CHAT_IDS = [
     "0a60ffd8fd9a14c44d8b",
