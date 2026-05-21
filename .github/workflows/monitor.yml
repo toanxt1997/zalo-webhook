@@ -13,7 +13,7 @@ jobs:
       - name: Check server
         id: check
         run: |
-          code=$(curl -o /dev/null -s -w "%{http_code}" https://wwws.apptx.xyz)
+          code=$(curl -o /dev/null -s -w "%{http_code}" https://wws.apptx.xyz)
 
           echo "HTTP CODE: $code"
 
