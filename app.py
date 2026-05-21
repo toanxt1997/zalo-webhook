@@ -1,4 +1,3 @@
-python
 from flask import Flask, request
 import asyncio
 import zalo_bot
